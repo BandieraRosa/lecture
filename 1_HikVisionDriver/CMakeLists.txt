@@ -4,7 +4,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 set(MVS_SDK_DIR "${CMAKE_CURRENT_SOURCE_DIR}/hikSDK")
 set(MVS_LIBRARY_DIR "${MVS_SDK_DIR}/lib/amd64")
-find_package(OpenCV REQUIRED COMPONENTS core)
+find_package(OpenCV REQUIRED COMPONENTS core highgui)
 
 add_library(hik_camera SHARED src/camera.cpp)
 add_library(hik_camera::hik_camera ALIAS hik_camera)
@@ -22,4 +22,4 @@ target_compile_options(hik_camera PRIVATE -Wall -Wextra -Wpedantic)
 target_link_options(hik_camera PRIVATE "LINKER:--disable-new-dtags")
 
 add_executable(hik_capture examples/capture.cpp)
-target_link_libraries(hik_capture PRIVATE hik_camera)
+target_link_libraries(hik_capture PRIVATE hik_camera opencv_highgui)

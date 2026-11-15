@@ -12,7 +12,7 @@ namespace hik
 struct Config
 {
   double exposure_us{1000.0};
-  double gain_db{15.0};
+  double gain_db{8.0};
   std::optional<double> gamma;
   std::optional<double> frame_rate_hz;
   std::optional<bool> auto_white_balance;

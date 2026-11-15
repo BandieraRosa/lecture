@@ -1,5 +1,6 @@
 #include <hik_camera/camera.hpp>
 #include <iostream>
+#include <opencv2/highgui.hpp>
 
 int main(int argc, char** argv)
 {
@@ -36,8 +37,8 @@ int main(int argc, char** argv)
   int count = 0;
   while (camera.Read(frame))
   {
-    // 在此调用算法，图像为 BGR8。
-    // belike: process(frame.image);
+    cv::imshow("frame", frame.image);
+    cv::waitKey(1);
     std::cout << "frame=" << frame.sequence << " " << frame.image.cols << "x"
               << frame.image.rows << '\n';
     ++count;
